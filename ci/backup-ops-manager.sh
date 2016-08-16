@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -x
+
 LOG_LEVEL=debug cfops backup \
   -opsmanagerhost $OPSMANAGER_HOST Ops Manager VM hostname] \
   -adminuser $ADMIN_USER \
