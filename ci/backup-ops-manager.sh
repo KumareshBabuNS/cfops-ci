@@ -4,7 +4,7 @@ LOG_LEVEL=debug cfops backup \
   -opsmanagerhost $OPSMANAGER_HOST Ops Manager VM hostname] \
   -adminuser $ADMIN_USER \
   -adminpass $ADMIN_PASS \
-  -opsmanageruser $OPSMANAGER_USER \
+  -opsmanageruser $OPSMANAGER_HOST_USER \
   -destination . \
   -tile ops-manager
 

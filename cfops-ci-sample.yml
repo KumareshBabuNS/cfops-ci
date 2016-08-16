@@ -8,6 +8,10 @@
 git-uri: https://github.com/<git-username>/cfops-ci.git
 git-branch: master
 # https://github.com/concourse/s3-resource
+opsmanager-host: <opsmanager-host>
+opsmanager-host-user: <opsmanager-host-user>
+opsmanager-admin-user: <opsmanager-admin-user>
+opsmanager-admin-pass: <opsmanager-admin-pass>
 opsmanager-bucket-name: <s3-bucket-name>
 opsmanager-bucket-key: <s3-access-key-id>
 opsmanager-bucket-secret: <s3-secret-access-key>

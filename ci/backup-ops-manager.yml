@@ -7,6 +7,12 @@ image_resource:
     repository: patrickcrocker/cfops-cli
     tag: 'latest'
 
+params:
+  OPSMANAGER_HOST:
+  OPSMANAGER_HOST_USER:
+  ADMIN_USER:
+  ADMIN_PASS:
+
 inputs:
 - name: cfops-ci
 

@@ -5,6 +5,11 @@ jobs:
   - get: cfops-ci
   - task: backup
     file: cfops-ci/ci/backup-ops-manager.yml
+    params:
+      OPSMANAGER_HOST: {{opsmanager-host}}
+      OPSMANAGER_HOST_USER: {{opsmanager-host-user}}
+      ADMIN_USER: {{opsmanager-admin-user}}
+      ADMIN_PASS: {{opsmanager-admin-pass}}
   - put: opsmanager-bucket
     params:
       file: backup-output/opsmanager-*.tar
