@@ -3,7 +3,7 @@
 set -e -x
 
 LOG_LEVEL=debug cfops backup \
-  -opsmanagerhost $OPSMANAGER_HOST Ops Manager VM hostname] \
+  -opsmanagerhost $OPSMANAGER_HOST \
   -adminuser $ADMIN_USER \
   -adminpass $ADMIN_PASS \
   -opsmanageruser $OPSMANAGER_HOST_USER \
