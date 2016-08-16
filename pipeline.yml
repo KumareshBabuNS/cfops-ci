@@ -20,6 +20,8 @@ jobs:
 - name: backup-elastic-runtime
   plan:
   - get: cfops-ci
+    trigger: true
+    passed: [backup-ops-manager]
   - task: backup
     file: cfops-ci/ci/backup-elastic-runtime.yml
     params:
