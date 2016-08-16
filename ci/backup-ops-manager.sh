@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e -x
+set -e
 
 LOG_LEVEL=debug cfops backup \
   -opsmanagerhost $OPSMANAGER_HOST \
