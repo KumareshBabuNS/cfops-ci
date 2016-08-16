@@ -1,0 +1,14 @@
+# Replace these with your own values:
+#   <git-username>
+#   <s3-bucket-name>
+#   <s3-access-key-id>
+#   <s3-secret-access-key>
+#   <s3-region-name>
+---
+git-uri: https://github.com/<git-username>/cfops-ci.git
+git-branch: master
+# https://github.com/concourse/s3-resource
+opsmanager-bucket-name: <s3-bucket-name>
+opsmanager-bucket-key: <s3-access-key-id>
+opsmanager-bucket-secret: <s3-secret-access-key>
+opsmanager-bucket-region: <s3-region-name>

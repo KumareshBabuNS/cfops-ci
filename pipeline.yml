@@ -1,0 +1,25 @@
+---
+jobs:
+- name: backup-ops-manager
+  plan:
+  - get: cfops-ci
+  - task: backup
+    file: cfops-ci/ci/backup-ops-manager.yml
+  - put: opsmanager-bucket
+    params:
+      file: backup-output/opsmanager-*.tar
+
+resources:
+- name: cfops-ci
+  type: git
+  source:
+    uri: {{git-uri}}
+    branch: {{git-branch}}
+
+- name: opsmanager-bucket
+  type: s3
+  source:
+    bucket: {{opsmanager-bucket-name}}
+    access_key_id: {{opsmanager-bucket-key}}
+    secrect_access_key: {{opsmanager-bucket-secret}}
+    region_name: {{opsmanager-bucket-region}}
