@@ -1,4 +1,10 @@
 ---
+cfops-params: &cfops-params
+  OPSMANAGER_HOST: {{opsmanager-host}}
+  OPSMANAGER_HOST_USER: {{opsmanager-host-user}}
+  ADMIN_USER: {{opsmanager-admin-user}}
+  ADMIN_PASS: {{opsmanager-admin-pass}}
+
 jobs:
 - name: backup-ops-manager
   plan:
@@ -6,13 +12,21 @@ jobs:
   - task: backup
     file: cfops-ci/ci/backup-ops-manager.yml
     params:
-      OPSMANAGER_HOST: {{opsmanager-host}}
-      OPSMANAGER_HOST_USER: {{opsmanager-host-user}}
-      ADMIN_USER: {{opsmanager-admin-user}}
-      ADMIN_PASS: {{opsmanager-admin-pass}}
+      <<: *cfops-params
   - put: opsmanager-bucket
     params:
       file: backup-output/opsmanager-*.tar
+
+- name: backup-elastic-runtime
+  plan:
+  - get: cfops-ci
+  - task: backup
+    file: cfops-ci/ci/backup-elastic-runtime.yml
+    params:
+      <<: *cfops-params
+  - put: elasticruntime-bucket
+    params:
+      file: backup-output/elasticruntime-*.tar
 
 resources:
 - name: cfops-ci
@@ -28,4 +42,13 @@ resources:
     regexp: opsmanager-(.*).tar
     access_key_id: {{opsmanager-bucket-key}}
     secret_access_key: {{opsmanager-bucket-secret}}
-    region_name: {{opsmanager-bucket-region}}
+    endpoint: {{opsmanager-bucket-endpoint}}
+
+- name: elasticruntime-bucket
+  type: s3
+  source:
+    bucket: {{elasticruntime-bucket-name}}
+    regexp: elasticruntime-(.*).tar
+    access_key_id: {{elasticruntime-bucket-key}}
+    secret_access_key: {{elasticruntime-bucket-secret}}
+    endpoint: {{elasticruntime-bucket-endpoint}}
