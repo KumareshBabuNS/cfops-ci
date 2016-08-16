@@ -25,6 +25,7 @@ resources:
   type: s3
   source:
     bucket: {{opsmanager-bucket-name}}
+    regexp: opsmanager-(.*).tar
     access_key_id: {{opsmanager-bucket-key}}
     secret_access_key: {{opsmanager-bucket-secret}}
     region_name: {{opsmanager-bucket-region}}

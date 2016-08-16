@@ -10,6 +10,6 @@ LOG_LEVEL=debug cfops backup \
   -destination . \
   -tile ops-manager
 
-TIMESTAMP=$(date +"%Y%d%m-%H%M")
+TIMESTAMP=$(date +"%Y%d%m%H%M")
 
 tar -cf backup-output/opsmanager-$TIMESTAMP.tar opsmanager
